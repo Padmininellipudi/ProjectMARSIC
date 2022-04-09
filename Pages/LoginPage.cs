@@ -16,6 +16,7 @@ namespace ProjectMARSIC.Pages
         {
             //Launch Mars portal
             driver.Navigate().GoToUrl("http://localhost:5000/");
+            driver.Manage().Window.Maximize();
             try
             {
                 //Click Sign Button

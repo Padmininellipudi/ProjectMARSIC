@@ -8,7 +8,7 @@ using ProjectMARSIC.Pages;
 namespace ProjectMARSIC.StepDefinitions
 {
     [Binding]
-    public class ProfileFeatureStepDefinitions: CommonDriver
+    public class ProfileFeatureStepDefinitions : CommonDriver
     {
         // Initializing Page Objects
         LoginPage loginPageObj = new LoginPage();
@@ -20,10 +20,9 @@ namespace ProjectMARSIC.StepDefinitions
         [Given(@"Seller is in Home Page")]
         public void GivenSellerIsInHomePage()
         {
-            driver = new ChromeDriver();
             loginPageObj.LoginSteps(driver);
         }
-        
+
         [When(@"Seller enters valid username and password")]
         public void WhenSellerEntersValidUsernameAndPassword()
         {
@@ -42,7 +41,7 @@ namespace ProjectMARSIC.StepDefinitions
             homePageObj.verifyLoginSuccess(driver);
         }
 
-        //Languages
+        //Adding Languages
 
         [Given(@"Seller is in Profile Page")]
         public void GivenSellerIsInProfilePage()
@@ -57,29 +56,71 @@ namespace ProjectMARSIC.StepDefinitions
         }
 
         [When(@"Seller inputs Language and Level")]
-        public void WhenSellerInputsLanguageAndLevel()
+        public void WhenSellerInputsLanguageAndLevel(String p0)
         {
-            profilePageObj.addLanguage(driver);
+            profilePageObj.addLanguage(driver, p0);
         }
 
         [When(@"clicks Add button")]
         public void WhenClicksAddButton()
         {
-            profilePageObj.addLanguage(driver);
+            profilePageObj.getLanguage(driver);
         }
 
         [Then(@"verify Seller can see the added languages in the Language section of Profile page")]
-        public void ThenVerifySellerCanSeeTheAddedLanguagesInTheLanguageSectionOfProfilePage()
+        public void ThenVerifySellerCanSeeTheAddedLanguagesInTheLanguageSectionOfProfilePage(String p0)
         {
-            
+
             String actualLanguage = profilePageObj.getLanguage(driver);
-            String actualLanguageLevel = profilePageObj.getLanguageLevel(driver);
             
-            Assert.That(actualLanguage == "English", "Actual Language and Expected Language do not match");
-            Assert.That(actualLanguageLevel == "Basic", "Actual Language Level and Expected Language Level do not match");
-            
-            //profilePageObj.verifyLanguage(driver);
+            Assert.That(actualLanguage == p0, "Actual Language and Expected Language match");
+            profilePageObj.verifyLanguage(driver, p0);
         }
-                    
+
+        //Edit Language and Language Level
+
+        [Given(@"Seller has Languages in Language section")]
+        public void GivenSellerHasLanguagesInLanguageSection()
+        {
+            profilePageObj.verifyLanguage(driver, "Eng");
+        }
+
+        [When(@"Seller Edits Languages")]
+        public void WhenSellerEditsLanguages()
+        {
+            profilePageObj.editLanguage(driver, "Eng", "Eng");
+        }
+
+        [Then(@"verify Seller can see the edited Languages in the Language section of Profile page")]
+        public void ThenVerifySellerCanSeeTheEditedLanguagesInTheLanguageSectionOfProfilePage()
+        {
+            profilePageObj.verifyEditedLanguage(driver, "dummy");
+        }
+
+
+        //Delete Language
+        [Given(@"Seller has Edited Languages in Language section")]
+        public void GivenSellerHasEditedLanguagesInLanguageSection()
+        {
+            profilePageObj.verifyEditedLanguage(driver, "dummy");
+        }
+
+        [When(@"Seller Deletes Edited Languages")]
+        public void WhenSellerDeletesEditedLanguages()
+        {
+            profilePageObj.deleteLanguage(driver, "dummy");
+        }
+
+        [Then(@"verify Seller can see the edited Languages deleted in the Language section of Profile page")]
+        public void ThenVerifySellerCanSeeTheEditedLanguagesDeletedInTheLanguageSectionOfProfilePage()
+        {
+            profilePageObj.verifyDeletedLanguage(driver, "dummy");
+        }
+
     }
 }
+
+
+
+
+    

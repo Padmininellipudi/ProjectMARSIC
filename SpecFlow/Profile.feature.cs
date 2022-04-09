@@ -341,7 +341,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 52
- testRunner.When("Seller Adds/Updates Profile Image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller Adds/Edits Profile Image", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 53
  testRunner.Then("verify Seller can see the Added/Updated Profile Image on the Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -371,7 +371,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 57
- testRunner.When("Seller Adds/Updates Seller\'s Name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller Adds/Edits Seller\'s Name", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 58
  testRunner.Then("verify Seller can see the Added/Updated Seller\'s Name on the Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -401,7 +401,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 62
- testRunner.When("Seller Adds/Updates Seller\'s Extra Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller Adds/Edits Seller\'s Extra Details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 63
  testRunner.Then("verify Seller can see the Added/Updated Seller\'s Extra Details on the Profile Pag" +
@@ -817,10 +817,14 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Validate if Seller can Add Languages")]
-        public void ValidateIfSellerCanAddLanguages()
+        [NUnit.Framework.TestCaseAttribute("English", null)]
+        [NUnit.Framework.TestCaseAttribute("Telugu", null)]
+        [NUnit.Framework.TestCaseAttribute("Tamil", null)]
+        public void ValidateIfSellerCanAddLanguages(string language, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Language", language);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Add Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 134
 this.ScenarioInitialize(scenarioInfo);
@@ -836,14 +840,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 136
- testRunner.When("Seller inputs Language and Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("Seller inputs \'{0}\'", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 137
  testRunner.And("clicks Add button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 138
- testRunner.Then("verify Seller can see the added languages in the Language section of Profile page" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("verify Seller can see the added \'{0}\' in the Language section of Profile page", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -856,7 +859,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Add up to a max of 4 Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 140
+#line 146
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -866,13 +869,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 141
+#line 147
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 142
+#line 148
  testRunner.When("Seller has already 4 Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 143
+#line 149
  testRunner.Then("verify Seller can\'t Add any more languages in the Language section of Profile pag" +
                         "e", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -887,36 +890,6 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Adds MaxLength value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 145
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 146
- testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 147
- testRunner.When("Seller inputs MaxLength value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 148
- testRunner.Then("verify Seller can see the appropriate message on the Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Adds Null value in Language field in Languages")]
-        public void ValidateIfSellerAddsNullValueInLanguageFieldInLanguages()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Adds Null value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 151
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -931,9 +904,39 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 153
- testRunner.When("Seller inputs Null value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller inputs MaxLength value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 154
+ testRunner.Then("verify Seller can see the appropriate message on the Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Adds Null value in Language field in Languages")]
+        public void ValidateIfSellerAddsNullValueInLanguageFieldInLanguages()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Adds Null value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 157
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 158
+ testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 159
+ testRunner.When("Seller inputs Null value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 160
  testRunner.Then("verify Seller can see the appropriate message on the Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -949,7 +952,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Adds Null value in Choose Language level dropdown in Languages" +
                     "", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 156
+#line 162
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -959,13 +962,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 157
+#line 163
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 158
+#line 164
  testRunner.When("Seller inputs Null value in Choose Language level dropdown in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 159
+#line 165
  testRunner.Then("verify Seller can see the appropriate message on the Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -979,40 +982,6 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while adding a Language", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 161
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 162
- testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 163
- testRunner.When("Seller inputs Language and Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 164
- testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 165
- testRunner.Then("verify Seller can\'t see the added languages in the Language section of Profile pa" +
-                        "ge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if Seller can Update Languages")]
-        public void ValidateIfSellerCanUpdateLanguages()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Update Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 167
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1024,12 +993,46 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 168
- testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 169
- testRunner.When("Seller Updates Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller inputs Language and Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 170
+ testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 171
+ testRunner.Then("verify Seller can\'t see the added languages in the Language section of Profile pa" +
+                        "ge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if Seller can Edit Languages")]
+        public void ValidateIfSellerCanEditLanguages()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Edit Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 173
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 174
+ testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 175
+ testRunner.When("Seller Edits Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 176
  testRunner.Then("verify Seller can see the updated Languages in the Language section of Profile pa" +
                         "ge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1038,13 +1041,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if Seller Updates with same value in Languages")]
-        public void ValidateIfSellerUpdatesWithSameValueInLanguages()
+        [NUnit.Framework.DescriptionAttribute("Validate if Seller Edits with same value in Languages")]
+        public void ValidateIfSellerEditsWithSameValueInLanguages()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller Updates with same value in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 172
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller Edits with same value in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 178
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1054,14 +1057,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 173
+#line 179
  testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 174
- testRunner.When("Seller Updates Languages with same values in Add Language and Choose Language Lev" +
-                        "el dropdown fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 180
+ testRunner.When("Seller Edits Languages with same values in Add Language and Choose Language Level" +
+                        " dropdown fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 175
+#line 181
  testRunner.Then("verify Seller can see \"This Language is already added to your language list\" in t" +
                         "he Language section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1070,43 +1073,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with MaxLength value in Language field in Languages")]
-        public void ValidateIfSellerUpdatesWithMaxLengthValueInLanguageFieldInLanguages()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with MaxLength value in Language field in Languages")]
+        public void ValidateIfSellerEditsWithMaxLengthValueInLanguageFieldInLanguages()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with MaxLength value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 177
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 178
- testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 179
- testRunner.When("Seller Updates with MaxLength value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 180
- testRunner.Then("verify Seller can see the appropriate message in the Language section of Profile " +
-                        "page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Language field in Languages")]
-        public void ValidateIfSellerUpdatesWithNullValueInLanguageFieldInLanguages()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with MaxLength value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 183
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1121,26 +1093,24 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 185
- testRunner.When("Seller Updates with Null value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller Edits with MaxLength value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 186
- testRunner.Then("verify Seller can see \"Please enter language and level\" in the language section o" +
-                        "f Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("verify Seller can see the appropriate message in the Language section of Profile " +
+                        "page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Choose Language level dropdown in L" +
-            "anguages")]
-        public void ValidateIfSellerUpdatesWithNullValueInChooseLanguageLevelDropdownInLanguages()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Language field in Languages")]
+        public void ValidateIfSellerEditsWithNullValueInLanguageFieldInLanguages()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Choose Language level dropdown in L" +
-                    "anguages", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 188
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Language field in Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 189
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1150,13 +1120,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 189
- testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 190
- testRunner.When("Seller Updates with Null value in Choose Language level dropdown in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 191
+ testRunner.When("Seller Edits with Null value in Language field in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 192
  testRunner.Then("verify Seller can see \"Please enter language and level\" in the language section o" +
                         "f Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1165,13 +1135,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller can Delete Languages")]
-        public void ValidateIfSellerCanDeleteLanguages()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Choose Language level dropdown in Lan" +
+            "guages")]
+        public void ValidateIfSellerEditsWithNullValueInChooseLanguageLevelDropdownInLanguages()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Delete Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 193
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Choose Language level dropdown in Lan" +
+                    "guages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 194
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1181,13 +1153,44 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 194
+#line 195
  testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 195
- testRunner.When("Seller Deletes Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 196
+ testRunner.When("Seller Edits with Null value in Choose Language level dropdown in Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 197
+ testRunner.Then("verify Seller can see \"Please enter language and level\" in the language section o" +
+                        "f Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if seller can Delete Edited Languages")]
+        public void ValidateIfSellerCanDeleteEditedLanguages()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Delete Edited Languages", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 199
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 200
+ testRunner.Given("Seller has Languages in Language section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 201
+ testRunner.When("Seller Deletes Edited Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 202
  testRunner.Then("verify Seller can see \"........ has been deleted from your languages\" in the Lang" +
                         "uage section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1202,7 +1205,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can View Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 198
+#line 204
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1212,13 +1215,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 199
+#line 205
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 200
+#line 206
  testRunner.When("there is any Skill for Seller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 201
+#line 207
  testRunner.Then("verify Seller can view the Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1232,7 +1235,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can\'t View Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 203
+#line 209
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1242,13 +1245,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 204
+#line 210
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 205
+#line 211
  testRunner.When("there is no Skill for Seller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 206
+#line 212
  testRunner.Then("verify Seller has to enter the Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1262,7 +1265,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can View the copy in Skills section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 208
+#line 214
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1272,13 +1275,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 209
+#line 215
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 210
+#line 216
  testRunner.When("Seller clicks Skills tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 211
+#line 217
  testRunner.Then("verify Seller can view \"Do you have any skills?...\" is displayed with an option t" +
                         "o Add New Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1293,7 +1296,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Add Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 213
+#line 219
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1303,16 +1306,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 214
+#line 220
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 215
+#line 221
  testRunner.When("Seller inputs Skill and Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 216
+#line 222
  testRunner.And("clicks Add button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 217
+#line 223
  testRunner.Then("verify Seller can see the added Skills in the Skill section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1326,7 +1329,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs MaxLength in Add Skill field in Skills section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 219
+#line 225
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1336,13 +1339,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 220
+#line 226
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 221
+#line 227
  testRunner.When("Seller Adds MaxLength value in Add Skill field in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 222
+#line 228
  testRunner.Then("verify Seller can see the appropriate message in the Skills section of Profile pa" +
                         "ge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1357,7 +1360,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Add Skill field in Skills section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 224
+#line 230
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1367,13 +1370,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 225
+#line 231
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 226
+#line 232
  testRunner.When("Seller Adds Null value in Add Skill field in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 227
+#line 233
  testRunner.Then("verify Seller can see \"Please enter skill and experience level\" in the Skills sec" +
                         "tion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1390,7 +1393,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Choose Skill Level dropdown in Skills sec" +
                     "tion", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 229
+#line 235
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1400,13 +1403,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 230
+#line 236
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 231
+#line 237
  testRunner.When("Seller Adds Null value in Choose Skill Level dropdown in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 232
+#line 238
  testRunner.Then("verify Seller can see \"Please enter skill and experience level\" in the Skills sec" +
                         "tion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1421,7 +1424,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs same value in Skills section of Profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 234
+#line 240
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1431,14 +1434,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 235
+#line 241
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 236
+#line 242
  testRunner.When("Seller Adds same value in Add Skill and Choose Skill Level dropdown in Skills sec" +
                         "tion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 237
+#line 243
  testRunner.Then("verify Seller can see \"Duplicate Data\" in the Skills section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1452,39 +1455,6 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while adding a Skill", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 239
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 240
- testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 241
- testRunner.When("Seller inputs Add Skill and Choose Skill Level in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 242
- testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 243
- testRunner.Then("verify Seller can\'t see the added skills in the Skills section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller can Update Skills")]
-        public void ValidateIfSellerCanUpdateSkills()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 245
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1499,12 +1469,45 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 247
- testRunner.And("Seller has Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Seller inputs Add Skill and Choose Skill Level in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 248
- testRunner.When("Seller Updates Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 249
+ testRunner.Then("verify Seller can\'t see the added skills in the Skills section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if seller can Update Skills")]
+        public void ValidateIfSellerCanUpdateSkills()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 251
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 252
+ testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 253
+ testRunner.And("Seller has Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 254
+ testRunner.When("Seller Edits Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 255
  testRunner.Then("verify seller can see the updated Skills in the Skill section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1518,7 +1521,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while Updating a Skill", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 252
+#line 258
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1528,19 +1531,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 253
+#line 259
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 254
+#line 260
  testRunner.And("Seller has a Skill", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 255
- testRunner.When("Seller Updates Add Skill and Choose Skill Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 261
+ testRunner.When("Seller Edits Add Skill and Choose Skill Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 256
+#line 262
  testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 257
+#line 263
  testRunner.Then("verify Seller can\'t see the Updated Skills in the Skills section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1554,7 +1557,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update with same value in Skills section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 259
+#line 265
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1564,14 +1567,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 260
+#line 266
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 261
- testRunner.When("Seller Updates same value in Add Skill and Choose Skill Level dropdown in Skills " +
-                        "section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 267
+ testRunner.When("Seller Edits same value in Add Skill and Choose Skill Level dropdown in Skills se" +
+                        "ction", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 262
+#line 268
  testRunner.Then("verify Seller can see \"This skill is already added to your skill list\" in the Ski" +
                         "lls section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1580,13 +1583,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Add Skill field in Skills section")]
-        public void ValidateIfSellerUpdatesWithNullValueInAddSkillFieldInSkillsSection()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Add Skill field in Skills section")]
+        public void ValidateIfSellerEditsWithNullValueInAddSkillFieldInSkillsSection()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Add Skill field in Skills section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 264
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Add Skill field in Skills section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 270
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1596,13 +1599,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 265
+#line 271
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 266
- testRunner.When("Seller Updates with Null value in Add Skill field in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 272
+ testRunner.When("Seller Edits with Null value in Add Skill field in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 267
+#line 273
  testRunner.Then("verify Seller can see \"Please enter skill and experience level\" in the Skills sec" +
                         "tion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1611,15 +1614,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates Null value in Choose Skill Level dropdown in Skills se" +
-            "ction")]
-        public void ValidateIfSellerUpdatesNullValueInChooseSkillLevelDropdownInSkillsSection()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits Null value in Choose Skill Level dropdown in Skills sect" +
+            "ion")]
+        public void ValidateIfSellerEditsNullValueInChooseSkillLevelDropdownInSkillsSection()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates Null value in Choose Skill Level dropdown in Skills se" +
-                    "ction", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 269
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits Null value in Choose Skill Level dropdown in Skills sect" +
+                    "ion", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 275
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1629,13 +1632,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 270
+#line 276
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 271
- testRunner.When("Seller Updates Null value in Choose Skill Level dropdown in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 277
+ testRunner.When("Seller Edits Null value in Choose Skill Level dropdown in Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 272
+#line 278
  testRunner.Then("verify Seller can see \"Please enter skill and experience level\" in the Skills sec" +
                         "tion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1650,7 +1653,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Delete Skills", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 274
+#line 280
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1660,13 +1663,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 275
+#line 281
  testRunner.Given("Seller has skills in Skills section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 276
+#line 282
  testRunner.When("Seller Deletes Skills", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 277
+#line 283
  testRunner.Then("verify Seller can see \"........ has been deleted from your Skills\" in the Skills " +
                         "section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1681,7 +1684,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can View Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 279
+#line 285
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1691,13 +1694,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 280
+#line 286
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 281
+#line 287
  testRunner.When("there is any Education for Seller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 282
+#line 288
  testRunner.Then("verify Seller can view the Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1711,7 +1714,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can\'t View Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 284
+#line 290
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1721,13 +1724,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 285
+#line 291
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 286
+#line 292
  testRunner.When("there is no Education for Seller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 287
+#line 293
  testRunner.Then("verify Seller has to enter the Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -1741,7 +1744,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can View the copy in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 289
+#line 295
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1751,13 +1754,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 290
+#line 296
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 291
+#line 297
  testRunner.When("Seller clicks Education tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 292
+#line 298
  testRunner.Then("verify Seller can view \"Did you attend a college or university?...\"with an option" +
                         " to Add New Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1772,7 +1775,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Add Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 294
+#line 300
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1782,17 +1785,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 295
+#line 301
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 296
+#line 302
  testRunner.When("Seller inputs College/University, Country of College/University, Title, Degree, Y" +
                         "ear of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 297
+#line 303
  testRunner.And("clicks Add button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 298
+#line 304
  testRunner.Then("verify Seller can see the added Education in the Education section of Profile pag" +
                         "e", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1809,7 +1812,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs MaxLength in College/University name field in Education" +
                     " section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 300
+#line 306
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1819,13 +1822,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 301
+#line 307
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 302
+#line 308
  testRunner.When("Seller Adds MaxLength value in College/ University name field in Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 303
+#line 309
  testRunner.Then("verify Seller can see the appropriate message in the Education section of Profile" +
                         " page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1842,7 +1845,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in College/ University name field in Educati" +
                     "on section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 305
+#line 311
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1852,13 +1855,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 306
+#line 312
  testRunner.Given("Seller has education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 307
+#line 313
  testRunner.When("Seller Adds Null value in College/ University name field in Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 308
+#line 314
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Education section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1875,7 +1878,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Country of College/University dropdown in" +
                     " Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 310
+#line 316
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1885,13 +1888,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 311
+#line 317
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 312
+#line 318
  testRunner.When("Seller Adds Null value in College/University dropdown in Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 313
+#line 319
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Education section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1906,7 +1909,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Title dropdown in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 315
+#line 321
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1916,13 +1919,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 316
+#line 322
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 317
+#line 323
  testRunner.When("Seller Adds Null value in Title dropdown in Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 318
+#line 324
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Education section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1937,7 +1940,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Degree field in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 320
+#line 326
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1947,13 +1950,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 321
+#line 327
  testRunner.Given("Seller has education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 322
+#line 328
  testRunner.When("Seller Adds Null value in Degree field in Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 323
+#line 329
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Education section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1970,7 +1973,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Year of Graduation dropdown in Education " +
                     "section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 325
+#line 331
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -1980,13 +1983,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 326
+#line 332
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 327
+#line 333
  testRunner.When("Seller Adds Null value in Year of Graduation dropdown in Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 328
+#line 334
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Education section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2001,7 +2004,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs same value in Education section of Profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 330
+#line 336
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2011,14 +2014,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 331
+#line 337
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 332
+#line 338
  testRunner.When("Seller Adds same value in College, Country, Title, Degree, Year fields in Educati" +
                         "on section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 333
+#line 339
  testRunner.Then("verify Seller can see \"This information already exists\" in the Education section " +
                         "of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2033,41 +2036,6 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while adding Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 335
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 336
- testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 337
- testRunner.When("Seller inputs College/University, Country of College/University, Title, Degree, Y" +
-                        "ear of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 338
- testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 339
- testRunner.Then("verify Seller can\'t see the added Education in the Education section of Profile p" +
-                        "age", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller can Update Education")]
-        public void ValidateIfSellerCanUpdateEducation()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 341
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -2082,13 +2050,48 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 343
- testRunner.And("Seller has Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Seller inputs College/University, Country of College/University, Title, Degree, Y" +
+                        "ear of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 344
- testRunner.When("Seller Updates College/University, Country of College/University, Title, Degree, " +
-                        "Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 345
+ testRunner.Then("verify Seller can\'t see the added Education in the Education section of Profile p" +
+                        "age", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if seller can Edit Education")]
+        public void ValidateIfSellerCanEditEducation()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Edit Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 347
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 348
+ testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 349
+ testRunner.And("Seller has Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 350
+ testRunner.When("Seller Edits College/University, Country of College/University, Title, Degree, Ye" +
+                        "ar of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 351
  testRunner.Then("verify seller can see the updated Education in the Education section of Profile p" +
                         "age", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2103,7 +2106,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while Updating Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 348
+#line 354
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2113,20 +2116,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 349
+#line 355
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 350
+#line 356
  testRunner.And("Seller has Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 351
- testRunner.When("Seller Updates College/University, Country of College/University, Title, Degree, " +
-                        "Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 357
+ testRunner.When("Seller Edits College/University, Country of College/University, Title, Degree, Ye" +
+                        "ar of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 352
+#line 358
  testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 353
+#line 359
  testRunner.Then("verify Seller can\'t see the Updated Education in the Education section of Profile" +
                         " page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2141,7 +2144,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller sees a message if Education is updated", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 355
+#line 361
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2151,20 +2154,20 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 356
+#line 362
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 357
+#line 363
  testRunner.And("Seller has Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 358
- testRunner.When("Seller Updates College/University, Country of College/University, Title, Degree, " +
-                        "Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 364
+ testRunner.When("Seller Edits College/University, Country of College/University, Title, Degree, Ye" +
+                        "ar of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 359
+#line 365
  testRunner.And("clicks Update button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 360
+#line 366
  testRunner.Then("verify Seller sees \"Education has been Updated\" in the Education section of Profi" +
                         "le page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2173,13 +2176,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller can Update with same value in Education section")]
-        public void ValidateIfSellerCanUpdateWithSameValueInEducationSection()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller can Edit with same value in Education section")]
+        public void ValidateIfSellerCanEditWithSameValueInEducationSection()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update with same value in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 362
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Edit with same value in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 368
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2189,14 +2192,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 363
+#line 369
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 364
- testRunner.When("Seller Updates same value in College/University, Country of College/University, T" +
-                        "itle, Degree, Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 370
+ testRunner.When("Seller Edits same value in College/University, Country of College/University, Tit" +
+                        "le, Degree, Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 365
+#line 371
  testRunner.Then("verify Seller can see \"This information already exists\" in the Education section " +
                         "of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2205,13 +2208,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Education section")]
-        public void ValidateIfSellerUpdatesWithNullValueInEducationSection()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Education section")]
+        public void ValidateIfSellerEditsWithNullValueInEducationSection()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 367
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Education section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 373
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2221,14 +2224,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 368
+#line 374
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 369
- testRunner.When("Seller Updates with Null value in College/University, Country of College/Universi" +
-                        "ty, Title, Degree, Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 375
+ testRunner.When("Seller Edits with Null value in College/University, Country of College/University" +
+                        ", Title, Degree, Year of Graduation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 370
+#line 376
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Education section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2243,7 +2246,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Delete Education", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 372
+#line 378
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2253,13 +2256,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 373
+#line 379
  testRunner.Given("Seller has Education in Education section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 374
+#line 380
  testRunner.When("Seller Deletes Education", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 375
+#line 381
  testRunner.Then("verify Seller can see \"Education entry successfully removed\" in the Education sec" +
                         "tion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2274,7 +2277,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can View Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 377
+#line 383
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2284,13 +2287,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 378
+#line 384
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 379
+#line 385
  testRunner.When("there is any Certification for Seller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 380
+#line 386
  testRunner.Then("verify Seller can view the Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -2304,7 +2307,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can\'t View Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 382
+#line 388
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2314,13 +2317,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 383
+#line 389
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 384
+#line 390
  testRunner.When("there is no Certification for Seller", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 385
+#line 391
  testRunner.Then("verify Seller has to enter the Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -2334,7 +2337,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can View the copy in Certification section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 387
+#line 393
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2344,13 +2347,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 388
+#line 394
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 389
+#line 395
  testRunner.When("Seller clicks Certification tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 390
+#line 396
  testRunner.Then("verify Seller can view \"Do you have any certifications?...\"with an option to Add " +
                         "New Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2365,7 +2368,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Add Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 392
+#line 398
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2375,17 +2378,17 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 393
+#line 399
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 394
+#line 400
  testRunner.When("Seller inputs Certificate/Award, Certified from, Year fields in Certification sec" +
                         "tion", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 395
+#line 401
  testRunner.And("clicks Add button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 396
+#line 402
  testRunner.Then("verify Seller can see the added Certification in the Certification section of Pro" +
                         "file page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2402,7 +2405,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs MaxLength in Certificate/Award field in Certification s" +
                     "ection", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 398
+#line 404
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2412,13 +2415,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 399
+#line 405
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 400
+#line 406
  testRunner.When("Seller Adds MaxLength value in Certificate/Award field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 401
+#line 407
  testRunner.Then("verify Seller can see the appropriate message in the Certification section of Pro" +
                         "file page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2435,7 +2438,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs MaxLength in Certified from field in Certification sect" +
                     "ion", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 403
+#line 409
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2445,13 +2448,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 404
+#line 410
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 405
+#line 411
  testRunner.When("Seller Adds MaxLength value in Certified from field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 406
+#line 412
  testRunner.Then("verify Seller can see \"Please enter all the fields\" in the Certification section " +
                         "of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2468,7 +2471,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Certificate/Award field in Certification " +
                     "section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 408
+#line 414
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2478,13 +2481,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 409
+#line 415
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 410
+#line 416
  testRunner.When("Seller Adds Null value in Certificate/Award field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 411
+#line 417
  testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
                         "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2501,7 +2504,7 @@ this.ScenarioInitialize(scenarioInfo);
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Certified from field in Certification sec" +
                     "tion", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 413
+#line 419
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2511,13 +2514,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 414
+#line 420
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 415
+#line 421
  testRunner.When("Seller Adds Null value in Certified from field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 416
+#line 422
  testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
                         "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2532,7 +2535,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs Null value in Year dropdown in Certification section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 418
+#line 424
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2542,13 +2545,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 419
+#line 425
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 420
+#line 426
  testRunner.When("Seller Adds Null value in Year dropdown field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 421
+#line 427
  testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
                         "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2563,7 +2566,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller inputs same value in Certification section of Profile page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 423
+#line 429
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2573,14 +2576,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 424
+#line 430
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 425
+#line 431
  testRunner.When("Seller Adds same value in Certificate/Award, Certified from, Year fields in Certi" +
                         "fication section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 426
+#line 432
  testRunner.Then("verify Seller can see \"This information already exists\" in the Certification sect" +
                         "ion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2595,40 +2598,6 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while adding Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 428
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 429
- testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 430
- testRunner.When("Seller inputs Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 431
- testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 432
- testRunner.Then("verify Seller can\'t see the added Certification in the Certification section of P" +
-                        "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller can Update Certification")]
-        public void ValidateIfSellerCanUpdateCertification()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 434
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -2643,13 +2612,13 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 436
- testRunner.And("Seller has Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Seller inputs Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 437
- testRunner.When("Seller Updates Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 438
- testRunner.Then("verify seller can see the updated Certification in the Certification section of P" +
+ testRunner.Then("verify Seller can\'t see the added Certification in the Certification section of P" +
                         "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -2657,12 +2626,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if Seller can Cancel the form while Updating Certification")]
-        public void ValidateIfSellerCanCancelTheFormWhileUpdatingCertification()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller can Update Certification")]
+        public void ValidateIfSellerCanUpdateCertification()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while Updating Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 440
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -2680,12 +2649,46 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Seller has Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 443
- testRunner.When("Seller Updates Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("Seller Edits Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 444
+ testRunner.Then("verify seller can see the updated Certification in the Certification section of P" +
+                        "rofile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if Seller can Cancel the form while Updating Certification")]
+        public void ValidateIfSellerCanCancelTheFormWhileUpdatingCertification()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if Seller can Cancel the form while Updating Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 446
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 447
+ testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 448
+ testRunner.And("Seller has Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 449
+ testRunner.When("Seller Edits Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 450
  testRunner.And("clicks Cancel button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 445
+#line 451
  testRunner.Then("verify Seller can\'t see the Updated Certification in the Certification section of" +
                         " Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2700,7 +2703,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller sees a message if Certification is updated", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 447
+#line 453
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2710,19 +2713,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 448
+#line 454
  testRunner.Given("Seller visits Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 449
+#line 455
  testRunner.And("Seller has Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 450
- testRunner.When("Seller Updates Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 456
+ testRunner.When("Seller Edits Certificate/Award, Certified from, Year fields in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 451
+#line 457
  testRunner.And("clicks Update button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 452
+#line 458
  testRunner.Then("verify Seller sees \"Certification has been Updated\" in the Certification section " +
                         "of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2737,7 +2740,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Update with same value in Certification section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 454
+#line 460
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2747,14 +2750,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 455
+#line 461
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 456
- testRunner.When("Seller Updates same value in Certificate/Award, Certified from, Year fields in Ce" +
-                        "rtification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 462
+ testRunner.When("Seller Edits same value in Certificate/Award, Certified from, Year fields in Cert" +
+                        "ification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 457
+#line 463
  testRunner.Then("verify Seller can see \"This information already exists\" in the Certification sect" +
                         "ion of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2763,64 +2766,31 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Certificate/Award field in Certific" +
-            "ation section")]
-        public void ValidateIfSellerUpdatesWithNullValueInCertificateAwardFieldInCertificationSection()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Certificate/Award field in Certificat" +
+            "ion section")]
+        public void ValidateIfSellerEditsWithNullValueInCertificateAwardFieldInCertificationSection()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Certificate/Award field in Certific" +
-                    "ation section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 459
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 460
- testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 461
- testRunner.When("Seller Updates with Null value in Certificate/Award field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 462
- testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
-                        "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Certified from field in Certificati" +
-            "on section")]
-        public void ValidateIfSellerUpdatesWithNullValueInCertifiedFromFieldInCertificationSection()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Certified from field in Certificati" +
-                    "on section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 464
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Certificate/Award field in Certificat" +
+                    "ion section", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 465
- testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
 #line 466
- testRunner.When("Seller Updates with Null value in Certified from field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 467
+ testRunner.When("Seller Edits with Null value in Certificate/Award field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 468
  testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
                         "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2829,15 +2799,15 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate if seller Updates with Null value in Certification Year field in Certifi" +
-            "cation section")]
-        public void ValidateIfSellerUpdatesWithNullValueInCertificationYearFieldInCertificationSection()
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Certified from field in Certification" +
+            " section")]
+        public void ValidateIfSellerEditsWithNullValueInCertifiedFromFieldInCertificationSection()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Updates with Null value in Certification Year field in Certifi" +
-                    "cation section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 469
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Certified from field in Certification" +
+                    " section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 470
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2847,13 +2817,46 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 470
+#line 471
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 471
- testRunner.When("Seller Updates with Null value in Certification Year field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 472
+ testRunner.When("Seller Edits with Null value in Certified from field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 473
+ testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
+                        "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate if seller Edits with Null value in Certification Year field in Certifica" +
+            "tion section")]
+        public void ValidateIfSellerEditsWithNullValueInCertificationYearFieldInCertificationSection()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller Edits with Null value in Certification Year field in Certifica" +
+                    "tion section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 475
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 476
+ testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 477
+ testRunner.When("Seller Edits with Null value in Certification Year field in Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 478
  testRunner.Then("verify Seller can see \"Please enter Certification Name, Certification From and Ce" +
                         "rtification Year\" in the Certification section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -2868,7 +2871,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate if seller can Delete Certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 474
+#line 480
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -2878,13 +2881,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 475
+#line 481
  testRunner.Given("Seller has Certification in Certification section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 476
+#line 482
  testRunner.When("Seller Deletes Certification", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 477
+#line 483
  testRunner.Then("verify Seller can see \"Certification entry successfully removed\" in the Certifica" +
                         "tion section of Profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

@@ -1,42 +1,53 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using ProjectMARSIC.Pages;
+using ProjectMARSIC.Utilities;
 using System;
 using System.Threading;
 
-namespace ProjectMARSIC
+namespace ProjectMARSIC.Tests
 {
-    internal class ProfileTests
+    [TestFixture]
+    internal class ProfileTests : CommonDriver
     {
-        static void Main(string[] args)
+        [Test, Order(1), Description("Check if Seller is able to Login Profile page with valid data")]
+        public void AddLanguage_Test()
         {
-            //Open Chrome Browser
-            IWebDriver driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-           
-            LoginPage loginPageObj = new LoginPage();
-            HomePage homePageObj = new HomePage();
             ProfilePage profilePageObj = new ProfilePage();
-
-            // Login
-            loginPageObj.loginSteps(driver);
-
-            //Check if user is logged in successfully
-            homePageObj.verifyLoginSuccess(driver);
-
-            //Go to Profile Page
-            homePageObj.navigateToProfilePage(driver);
-
 
             //Add Language
             profilePageObj.navigateToLanguagesTab(driver);
-            profilePageObj.addLanguage(driver);
+            profilePageObj.addLanguage(driver, "English");
 
             //Verify Language Added
-            profilePageObj.verifyLanguage(driver);
+            profilePageObj.verifyLanguage(driver, "English");
+        }
 
-            //Quit Browser
-            driver.Quit();
+        [Test, Order(2), Description("Check if Seller is able to edit a Language and Language Level with valid data")]
+        public void EditLanguage_Test()
+        {
+            ProfilePage profilePageObj = new ProfilePage();
+
+            //Edit Language
+            profilePageObj.navigateToLanguagesTab(driver);
+            profilePageObj.verifyLanguage(driver, "English");
+            profilePageObj.editLanguage(driver, "English", "EditedEnglish");
+
+            //Verify Language Edited
+            profilePageObj.verifyEditedLanguage(driver, "dummy");
+        }
+
+        [Test, Order(3), Description("Check if Seller is able to Delete Language with valid data")]
+        public void DeleteLanguage_Test()
+        {
+            ProfilePage profilePageObj = new ProfilePage();
+
+            //Delete Language
+            profilePageObj.navigateToLanguagesTab(driver);
+            profilePageObj.verifyEditedLanguage(driver, "dummy");
+            profilePageObj.deleteLanguage(driver, "EditedEnglish");
+
         }
     }
 }

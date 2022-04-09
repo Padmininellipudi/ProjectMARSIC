@@ -2,20 +2,16 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using ProjectMARSIC.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectMARSIC.Utilities
 {
+    [TestFixture]
     public class CommonDriver
     {
-        public IWebDriver driver;
+        protected IWebDriver driver;
 
         [OneTimeSetUp]
-        public void LoginFunction()
+        protected void LoginFunction()
         {
             // Open Chrome Browser
             driver = new ChromeDriver();
@@ -24,11 +20,18 @@ namespace ProjectMARSIC.Utilities
             // Login page object Initialization and Definition
             LoginPage loginPageObj = new LoginPage();
             loginPageObj.loginSteps(driver);
+
+            //Check if user is logged in successfully
+            HomePage homePageObj = new HomePage();
+            homePageObj.verifyLoginSuccess(driver);
+            homePageObj.navigateToProfilePage(driver);
         }
+
         [OneTimeTearDown]
-        public void CloseTestRun()
+        protected void CloseTestRun()
         {
             driver.Quit();
         }
+
     }
 }

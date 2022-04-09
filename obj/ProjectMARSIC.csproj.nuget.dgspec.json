@@ -44,9 +44,9 @@
               "target": "Package",
               "version": "[3.11.0, )"
             },
-            "Microsoft.NETCore.App": {
+            "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[2.2.8, )"
+              "version": "[17.1.0, )"
             },
             "NUnit": {
               "target": "Package",
