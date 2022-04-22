@@ -42,5 +42,22 @@ namespace ProjectMARSIC.Pages
             goToProfileOption.Click();
             Thread.Sleep(3000);
         }
+
+        public void navigateToShareSkill(IWebDriver driver)
+        {
+            //Identify Share skill button and click
+            IWebElement shareSkillButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[1]/div/div[2]/a"));
+            shareSkillButton.Click();
+            Thread.Sleep(3000);
+        }
+
+        public void navigateToManageListing(IWebDriver driver)
+        {
+            //Identify Manage listing link and click
+            Thread.Sleep(2000);
+            IWebElement manageListingLink = driver.FindElement(By.XPath("//*[@id='listing-management-section']/section[1]/div/a[3]"));
+            manageListingLink.Click();
+            Thread.Sleep(3000);        
+        }
     }
 }

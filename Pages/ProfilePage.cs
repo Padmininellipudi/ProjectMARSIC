@@ -12,7 +12,6 @@ namespace ProjectMARSIC.Pages
 {
     internal class ProfilePage
     {
-        //private IWebDriver driver;
         IWebElement goToLanguageTab;
         public void navigateToLanguagesTab(IWebDriver driver)
         {
@@ -157,8 +156,7 @@ namespace ProjectMARSIC.Pages
 
         public void deleteLanguage(IWebDriver driver, String language)
         {
-            //Wait until the entire Profile page is displayed
-            
+            //Wait until the entire Profile page is displayed            
             //Wait.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[1]/div/a[2]", 3);
 
             //Click on language section
@@ -172,25 +170,13 @@ namespace ProjectMARSIC.Pages
                 // Click on delete button
                 IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i"));
                 deleteButton.Click();
-                Console.WriteLine("Language Deleted Successfully");
-
-                ////Wait for the alert to be displayed
-                ////Store the alert in a variable
-                //IAlert alert = driver.SwitchTo().Alert();
-                //Thread.Sleep(3000);
-                ////Store the alert in a variable for reuse
-                //string text = alert.Text;
-
-                ////Press Ok button
-                //alert.Accept();
+                Console.WriteLine("Language Deleted Successfully");                
             }
             else
             {
                 Assert.Fail("Record to be deleted has not found, Record not deleted");
                 Thread.Sleep(2000);
             }
-            //driver.Navigate().Refresh();
-            //Thread.Sleep(1000);
         }
 
         public void verifyDeletedLanguage(IWebDriver driver, string p0)

@@ -30,7 +30,7 @@ namespace ProjectMARSIC.Pages
 
                 //Identify password textbox and enter valid password
                 IWebElement passwordTextbox = driver.FindElement(By.Name("password"));
-                passwordTextbox.SendKeys("paddusrinu");
+                passwordTextbox.SendKeys("mvpstudio");
                                 
                 //Click on Login button
                 IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));

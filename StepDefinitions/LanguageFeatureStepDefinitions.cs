@@ -14,8 +14,7 @@ namespace ProjectMARSIC.StepDefinitions
         HomePage homePageObj = new HomePage();
         ProfilePage profilePageObj = new ProfilePage();
         LoginPage loginPageObj = new LoginPage();
-
-    //Adds Language and Language Level   
+              
         [Given(@"Seller visits Profile page")]
         public void GivenSellerVisitsProfilePage()
         {
@@ -24,6 +23,7 @@ namespace ProjectMARSIC.StepDefinitions
             homePageObj.goToProfilePage(driver);
         }
 
+        //Adds Language and Language Level 
         [When(@"Seller adds '([^']*)'")]
         public void WhenSellerAdds(string p0)
         {
