@@ -6,20 +6,30 @@ using OpenQA.Selenium.Chrome;
 using ProjectMARSIC.Pages;
 using System;
 using System.IO;
+using OpenQA.Selenium.Support;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using SeleniumExtras.WaitHelpers;
+using System.Drawing.Imaging;
+using OpenQA.Selenium.Support.UI;
+using ProjectMARSIC.DataUtility;
 
 namespace ProjectMARSIC.Utilities
 {
     [TestFixture]
     public class CommonDriver
     {
-        protected IWebDriver driver;
+        public IWebDriver driver;
 
         // Extent Report Setup
         public ExtentReports extent;
         public ExtentTest test;
         public ExtentHtmlReporter htmlReporter;
         public static string screenshotDirectory;
-
+        
         [OneTimeSetUp]
         public void LoginFunction()
         {
@@ -49,14 +59,13 @@ namespace ProjectMARSIC.Utilities
         {
             string filePath = Directory.GetParent(@"../../../").FullName
                 + Path.DirectorySeparatorChar + "Results"
-                + Path.DirectorySeparatorChar + testCase + DateTime.Now.ToString("ddMMyyyy HHmmss");
+                + Path.DirectorySeparatorChar;
 
             htmlReporter = new ExtentHtmlReporter(filePath);
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
             return extent;
         }
-
 
         public void takeScreenShot(IWebDriver driver)
         {
@@ -67,6 +76,5 @@ namespace ProjectMARSIC.Utilities
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile(screenshotFileName, ScreenshotImageFormat.Png);
         }
-
     }
 }

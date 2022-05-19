@@ -46,6 +46,7 @@ namespace ProjectMARSIC.Pages
         public void navigateToShareSkill(IWebDriver driver)
         {
             //Identify Share skill button and click
+            Thread.Sleep(3000);
             IWebElement shareSkillButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[1]/div/div[2]/a"));
             shareSkillButton.Click();
             Thread.Sleep(3000);

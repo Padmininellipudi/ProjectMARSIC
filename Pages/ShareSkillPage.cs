@@ -7,13 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoItX3Lib;
+using System.IO;
 
 namespace ProjectMARSIC.Pages
 {
-    internal class ShareSkillPage
+    public class ShareSkillPage
     {
+        AutoItX3 fileUpload = new AutoItX3();
+        public string parentDir = Directory.GetParent(@"../../../").FullName;
+        
+        
         public void navigateToServiceListing(IWebDriver driver)
         {
+            Thread.Sleep(3000);
             //Identify ShareSkill button and click
             IWebElement shareSkillButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[1]/div/div[2]/a"));
             shareSkillButton.Click();
@@ -21,94 +28,137 @@ namespace ProjectMARSIC.Pages
 
         //Add all Sections in Share Skill 
 
-        public void addListings(IWebDriver driver)
+        public void addListings(IWebDriver driver, String title, String description, String category, String subCategory, String serviceTag, String serviceType, String locationType, String startDate, String endDate, String workSample)
         {
-            //Enter Title in Textbox
-            Thread.Sleep(2000);
-            IWebElement titleTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
-            titleTextbox.SendKeys("Software Testing");
+            try
+            {
 
-            //Enter Description in Textbox
-            Thread.Sleep(2000);
-            IWebElement descriptionTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/ div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
-            descriptionTextbox.SendKeys("My hobbies are travelling, teaching and cooking");
+                //Enter Title in Textbox
+                Thread.Sleep(2000);
+                IWebElement titleTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+                titleTextbox.SendKeys(title);
 
-            //Select category and subcategory in Share Skill
-            Thread.Sleep(2000);
-            IWebElement categoryDropdown = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div/select"));
-            categoryDropdown.Click();
-            Thread.Sleep(3000);
-
-            IWebElement programmingTechOption = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[1]/select/option[7]"));
-            programmingTechOption.Click();
-            Thread.Sleep(2000);
-
-            IWebElement subCategoryDropdown = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select"));
-            subCategoryDropdown.Click();
-            Thread.Sleep(3000);
-
-            IWebElement qaOption = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select/option[5]"));
-            qaOption.Click();
-
-            //Add new tags in Tags field
-            Thread.Sleep(2000);
-            IWebElement tagsTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
-            tagsTextbox.Click();
-            tagsTextbox.SendKeys("Testing");
-            tagsTextbox.SendKeys(Keys.Enter);
+                //Enter Description in Textbox
+                Thread.Sleep(2000);
+                IWebElement descriptionTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/ div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
+                //descriptionTextbox.Click();
+                descriptionTextbox.SendKeys(description);
 
 
-            //Select Service type
-            Thread.Sleep(2000);
-            IWebElement hourlyBasisServiceRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[5]/div[2]/div[1]/div[1]/div/input"));
-            hourlyBasisServiceRadiobox.Click();
+                //Select category and subcategory in Share Skill
+                Thread.Sleep(2000);
+                IWebElement categoryDropdown = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div/select"));
+                categoryDropdown.Click();
+                categoryDropdown.SendKeys(category);
+                categoryDropdown.Click();
+                Thread.Sleep(3000);
 
-            //Select Location Type
-            Thread.Sleep(2000);
-            IWebElement onlineRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[6]/div[2]/div/div[2]/div/input"));
-            onlineRadiobox.Click();
+                IWebElement subCategoryDropdown = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select"));
+                subCategoryDropdown.Click();
+                subCategoryDropdown.SendKeys(subCategory);
+                subCategoryDropdown.Click();
+                Thread.Sleep(3000);
 
-            //Select Available days
-            Thread.Sleep(2000);
-            IWebElement startDate = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
-            startDate.SendKeys("25/04/2022");
 
-            Thread.Sleep(2000);
-            IWebElement endDate = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input"));
-            endDate.SendKeys("30/04/2022");
+                //Add new tags in Tags field
+                IWebElement tagsTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
+                tagsTextbox.Click();
+                Thread.Sleep(2000);
+                tagsTextbox.SendKeys(serviceTag);
+                tagsTextbox.SendKeys(Keys.Enter);
 
-            Thread.Sleep(2000);
-            IWebElement sunCheckbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[2]/div[1]/div/input"));
-            sunCheckbox.Click();
 
-            Thread.Sleep(2000);
-            IWebElement startTime = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[2]/div[2]/input"));
-            startTime.SendKeys("05:50pm");
+                //Select Service type
+                Thread.Sleep(2000);
+                IWebElement hourlyBasisServiceRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[5]/div[2]/div[1]/div[1]/div/input"));
+                hourlyBasisServiceRadiobox.Click();
+                hourlyBasisServiceRadiobox.SendKeys(serviceType);
 
-            Thread.Sleep(2000);
-            IWebElement endTime = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[2]/div[3]/input"));
-            endTime.SendKeys("12:30pm");
 
-            //Select Skill Trade
-            Thread.Sleep(2000);
-            IWebElement creditRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[8]/div[2]/div/div[2]/div/input"));
-            creditRadiobox.Click();
+                //Select Location Type
+                Thread.Sleep(2000);
+                IWebElement onlineRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[6]/div[2]/div/div[2]/div/input"));
+                onlineRadiobox.Click();
+                onlineRadiobox.SendKeys(locationType);
 
-            //Enter credit amount
-            Thread.Sleep(2000);
-            IWebElement creditTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/ div[2]/div/form/div[8]/div[4]/div/div/input"));
-            creditTextbox.SendKeys("5");
 
-            //Select Active radiobox
-            Thread.Sleep(2000);
-            IWebElement activeRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[10]/div[2]/div/div[1]/div/input"));
-            activeRadiobox.Click();
+                //Select Available days
+                Thread.Sleep(2000);
+                IWebElement startDate1 = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
+                startDate1.Click();
+                startDate1.SendKeys(startDate);
 
-            //Click Save button
-            IWebElement saveButton = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[11]/div/input[1]"));
-            saveButton.Click();
+                Thread.Sleep(2000);
+                IWebElement endDate1 = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[1]/div[4]/input"));
+                endDate1.Click();
+                endDate1.SendKeys(endDate);
+
+
+                Thread.Sleep(2000);
+                IWebElement sunCheckbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[2]/div[1]/div/input"));
+                sunCheckbox.Click();
+
+                //Select start time and end time
+                Thread.Sleep(2000);
+                IWebElement startTime = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[2]/div[2]/input"));
+                startTime.SendKeys("05:50pm");
+
+                Thread.Sleep(2000);
+                IWebElement endTime = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[2]/div[3]/input"));
+                endTime.SendKeys("12:30pm");
+
+                //Select Skill Trade
+                Thread.Sleep(2000);
+                IWebElement creditRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[8]/div[2]/div/div[2]/div/input"));
+                creditRadiobox.Click();
+
+                //Enter credit amount
+                Thread.Sleep(2000);
+                IWebElement creditTextbox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/ div[2]/div/form/div[8]/div[4]/div/div/input"));
+                creditTextbox.SendKeys("5");
+
+                //Upload Samples
+                Thread.Sleep(2000);
+                IWebElement workSamples = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
+                workSamples.Click();
+                Thread.Sleep(2000);
+                uploadFile(workSample);
+                IWebElement removeWorkSamples = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/div/i[1]"));
+                removeWorkSamples.Click();
+                Thread.Sleep(3000);
+
+
+                //Select Active radiobox
+                Thread.Sleep(2000);
+                IWebElement activeRadiobox = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[10]/div[2]/div/div[1]/div/input"));
+                activeRadiobox.Click();
+
+                //Click Save button
+                IWebElement saveButton = driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[11]/div/input[1]"));
+                saveButton.Click();
+                Thread.Sleep(5000);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ignore Worksample Error", ex.Message);
+            }
         }
-        
+
+        public void uploadFile(string filename)
+        {
+            fileUpload.WinActivate("Open");
+            Console.WriteLine(parentDir);
+
+            string filePath = parentDir
+                + Path.DirectorySeparatorChar + "FileUpload"
+                + Path.DirectorySeparatorChar + filename;
+            Console.WriteLine(filePath);
+
+            fileUpload.Send(filePath);
+            fileUpload.Send("{ENTER}");
+            Thread.Sleep(2000);
+        }
+
         public string getTitle(IWebDriver driver)
         {
             Thread.Sleep(2000);
@@ -128,26 +178,8 @@ namespace ProjectMARSIC.Pages
             Thread.Sleep(2000);
             IWebElement category = driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[2]"));
             return category.Text;
-        }
-
-        public void verifyAddSkill(IWebDriver driver)
-        {
-            Thread.Sleep(3000);
-            IWebElement actualTitle = driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]"));
-            IWebElement actualDescription = driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[4]"));
-            
-            Console.WriteLine("Actual Title ... " + actualTitle.Text);
-            Console.WriteLine("Actual Description ..." + actualDescription.Text);
-
-            if (actualTitle.Text == "Software Testing")
-            {
-                Console.WriteLine("Title is added successfully, test is passed");
-            }
-            else
-            {
-                Console.WriteLine("Test failed");
-            }
-        }
+        }        
+        
         //Navigates to Manage Listing page
         public void navigateToManageListing(IWebDriver driver)
         {

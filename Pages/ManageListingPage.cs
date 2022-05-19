@@ -16,6 +16,15 @@ namespace ProjectMARSIC.Pages
             IWebElement manageListingLink = driver.FindElement(By.XPath("//*[@id='listing-management-section']div/section[1]/div/a[3]"));
             manageListingLink.Click();
         }
+        public void navigateToShareSkill(IWebDriver driver)
+        {
+            //Identify Share skill button and click
+            Thread.Sleep(3000);
+            IWebElement shareSkillButton = driver.FindElement(By.XPath("//*[@id='listing-management-section']/section[1]/div/div[2]/a"));
+            shareSkillButton.Click();
+            Thread.Sleep(3000);
+        }
+
         public void verifyListing(IWebDriver driver)
         {
             IWebElement eyeIcon = driver.FindElement(By.XPath("//*[@id='listing-management-section']/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[1]/i"));
@@ -27,16 +36,7 @@ namespace ProjectMARSIC.Pages
 
             Console.WriteLine("Actual Category ... " + actualCategory.Text);
             Console.WriteLine("Actual Title ..." + actualTitle.Text);
-            Console.WriteLine("Actual Description..." + actualDescription.Text);
-
-            //if (actualCategory.Text == )
-            //{
-            //    Console.WriteLine("Language is added successfully, test is passed");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Test failed");
-            //}
+            Console.WriteLine("Actual Description..." + actualDescription.Text);            
         }
         public void editSkill(IWebDriver driver)
         {
